@@ -49,20 +49,16 @@ isPalindrome("11/02/2011") // true
 isPalindrome("03/04/2001") // false */
 
 
-//=> pb avec l'année faudrait la scindée en 2 et l'inversee
-date = "14/02/2011"
-function isPalindrome(date){
-    let dateInversee = date.split("/").reverse().join("")
-    console.log("inversee " +dateInversee)
-    //let dateInversee2 = dateInversee.split().reverse()
-    //console.log("inverse " +dateInversee2)
-    date = date.split("/").join("")
+// 1ere solution
+//date = "11/02/2011"
+/*function isPalindrome(date){
+
+    date = date.split("/").join("") // on elève les "/" et on joint les chiffres
     console.log('Date '+date)
-    //let tabDate = date.split("/")
-    //console.log(tabDate)
-    //let inverseDate = tabDate.reverse()
-    //console.log(inverseDate)
-    //let tabInverseDate
+    
+    let dateInversee = date.split("").reverse().join("") //on inverse l'ordre des chiffres et on les joint
+    console.log("2 " + dateInversee)
+  
     if(date === dateInversee){
         //console.log(date)
         return true
@@ -70,18 +66,64 @@ function isPalindrome(date){
         //console.log(date)
         return false
     }
+}*/
+
+
+//console.log("est-ce un palindrome ? " + isPalindrome("11/02/2011"))
+
+
+/*// Renvoie un mot écrit à l'envers
+function inverser(mot) {
+    var motInverse = "";
+ 
+    // Solution 1 : ajouter chaque lettre au début du mot inversé
+    for (var i = 0; i < mot.length; i++) {
+        motInverse = mot[i] + motInverse;
+    }
+ 
+    return motInverse;
+}*/
+
+//2nd solution
+
+function isPalindrome(date){
+
+    date = date.split("/").join("")  // on elève les "/" et on joint les chiffres
+
+    let dateInversee = "";
+
+    for(let i=0 ; i < date.length; i++){ // une boucle pour ajouter les chiffres au début du nombre
+        dateInversee = date[i] + dateInversee
+        console.log(dateInversee)
+    }
+
+    if(date === dateInversee){ // on compare les deux nombres
+        //console.log(date)
+        return true
+    }else{
+        //console.log(date)
+        return false
+    }
+}
+console.log("est-ce un palindrome ? " + isPalindrome("14/02/2011"))
+
+/*Étape 3
+
+Créer une fonction getNextPalindromes qui donne les x prochaines dates palindromes à compter d’aujourd’hui. La fonction prendra le x en paramètre.
+
+getNextPalindromes(8)
+22/02/2022
+03/02/2030
+13/02/2031
+23/02/2032
+04/02/2040
+14/02/2041
+24/02/2042
+05/02/2050*/
+
+function getNextPalindromes(x){
+    let dateDuJour = Date()
+    console.log(dateDuJour)
 }
 
-console.log(isPalindrome(date))
-/*const strCopy = str.split();
-console.log(strCopy);
-// Expected output: Array ["The quick brown fox jumps over the lazy dog."] pr transformer une chaine de caractere en tableau et l'inverser avec .reverse
-const array1 = ["one", "two", "three"];
-const reversed = array1.reverse();
-console.log("reversed:", reversed);
-// Expected output: "reversed:" Array ["three", "two", "one"]
-// const str = "résumé";
-const strReverse = str.split(/(?:)/u).reverse().join("");
-// => "́emuśer"
-
-dateInversee = date.split("").reverse().join("")*/
+getNextPalindromes(2)
