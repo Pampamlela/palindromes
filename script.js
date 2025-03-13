@@ -6,8 +6,9 @@ il faut qu'elle existe et qu'elle soit au format dd/mm/aaaa.
 */
 
 function isValidDate(date){
-//on sépare la chaine de caractères
+//on sépare la chaine de caractères, on enlève les "/"
     let partDate = date.split('/');
+    console.log(partDate)
 
 //on vérifie que la date est bien divisée en trois parties
     if (partDate.length !== 3) {
@@ -16,12 +17,15 @@ function isValidDate(date){
 //on extraire le jour, le mois et l'année, parseInt : analyse et convertit une chaine de caractères, 
 // fournie en argument, en un entier dans la base souhaitée ici : chaine de caractère avec son index[i] et la base 10
     let jour = parseInt(partDate[0], 10);
+    console.log("jour " + jour)
     let mois = parseInt(partDate[1], 10) - 1; // Le mois est 0-indexé
+    console.log("mois " + mois)
     let annee = parseInt(partDate[2], 10);
+    console.log("année " + annee)
 
 //on vérifie que le jour, mois et année sont des valeurs valides
     if (isNaN(jour) || isNaN(mois) || isNaN(annee)) {
-    return false;
+        return false;
     }    
 //on vérifie que l'année est dans l'intervalle [1000, 9999]
     if (annee < 1000 || annee > 9999) {
@@ -29,14 +33,19 @@ function isValidDate(date){
     }
 //on crée un objet Date avec les parties extraites
     let objetDate = new Date(annee, mois, jour);
+    console.log("objetDate " + objetDate)
 
+    /*console.log("jour " + objetDate.getDate())
+    console.log("mois " + objetDate.getMonth())
+    console.log("année " + objetDate.getFullYear())*/
 //on vérifie que la date correspond bien aux valeurs du jour, mois, année, grace à la méthode .getDate .getMonth et .getFullYear
     return objetDate.getDate() === jour && objetDate.getMonth() === mois && objetDate.getFullYear() === annee;
+    console.log(objetDate.getDate)
 }
 
 
 
-console.log(isValidDate("31/11/1981"))
+console.log(isValidDate("32/01/1981"))
 
 /*Etape 2
 
@@ -71,18 +80,6 @@ isPalindrome("03/04/2001") // false */
 
 //console.log("est-ce un palindrome ? " + isPalindrome("11/02/2011"))
 
-
-/*// Renvoie un mot écrit à l'envers
-function inverser(mot) {
-    var motInverse = "";
- 
-    // Solution 1 : ajouter chaque lettre au début du mot inversé
-    for (var i = 0; i < mot.length; i++) {
-        motInverse = mot[i] + motInverse;
-    }
- 
-    return motInverse;
-}*/
 
 //2nd solution
 
@@ -121,9 +118,36 @@ getNextPalindromes(8)
 24/02/2042
 05/02/2050*/
 
-function getNextPalindromes(x){
-    let dateDuJour = Date()
-    console.log(dateDuJour)
-}
+
 
 getNextPalindromes(2)
+
+let currentDate = new Date();
+console.log(currentDate); // Affiche la date et l'heure actuelles en annee-mois-jour en chiffre 
+
+
+function formatDateddjjaaaa(date) {
+    let annee = date.getFullYear();
+    let mois = ('0' + (date.getMonth() + 1)).slice(-2); //"0" pour les 9 premiers mois, +1 car janvier est index 0, .slice(-2) pr enlever le 0 si on est sur les 10 11 et 12e mois
+    let jour = ('0' + date.getDate()).slice(-2); //"0" pour les 9 premiers jours et .slice(-2) pr enlever le 0
+    return `${jour}/${mois}/${annee}`;
+}
+
+let exampleDate = new Date(20203, 9, 15); //objet Date (annee, mois indexé, jour)
+console.log(formatDateddjjaaaa(exampleDate)); // "15/10/2023"
+
+function getNextPalindromes(x){
+    let dateDuJour = new Date()
+    console.log(dateDuJour) // affiche la date et l'heure en jour de la semaine mois en lettre, jour, annee 
+    let listePalindromes = "" //liste qui se remplira avec les palindromes trouvés
+
+    /*while(listePalindromes.length < x){
+       let nouvelleDate = new Date () ++
+}*/
+    if(nouvelleDate === isPalindrome() true ){
+        return nouvelleDate += listePalindromes
+    }else{
+        nouvelleDate 
+    }
+    
+}
