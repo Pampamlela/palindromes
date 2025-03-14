@@ -45,7 +45,7 @@ function isValidDate(date){
 
 
 
-console.log(isValidDate("32/01/1981"))
+console.log(isValidDate("08/01/1981"))
 
 /*Etape 2
 
@@ -75,10 +75,10 @@ isPalindrome("03/04/2001") // false */
         //console.log(date)
         return false
     }
-}*/
+}
 
 
-//console.log("est-ce un palindrome ? " + isPalindrome("11/02/2011"))
+console.log("est-ce un palindrome ? " + isPalindrome("14/02/2011"))*/
 
 
 //2nd solution
@@ -119,35 +119,54 @@ getNextPalindromes(8)
 05/02/2050*/
 
 
-
-getNextPalindromes(2)
-
-let currentDate = new Date();
-console.log(currentDate); // Affiche la date et l'heure actuelles en annee-mois-jour en chiffre 
-
-
-function formatDateddjjaaaa(date) {
-    let annee = date.getFullYear();
-    let mois = ('0' + (date.getMonth() + 1)).slice(-2); //"0" pour les 9 premiers mois, +1 car janvier est index 0, .slice(-2) pr enlever le 0 si on est sur les 10 11 et 12e mois
-    let jour = ('0' + date.getDate()).slice(-2); //"0" pour les 9 premiers jours et .slice(-2) pr enlever le 0
-    return `${jour}/${mois}/${annee}`;
-}
-
-let exampleDate = new Date(20203, 9, 15); //objet Date (annee, mois indexé, jour)
-console.log(formatDateddjjaaaa(exampleDate)); // "15/10/2023"
-
-function getNextPalindromes(x){
+/*function getNextPalindromes(x){
     let dateDuJour = new Date()
-    console.log(dateDuJour) // affiche la date et l'heure en jour de la semaine mois en lettre, jour, annee 
-    let listePalindromes = "" //liste qui se remplira avec les palindromes trouvés
+    console.log("dateduJour " + new Date()) // affiche la date et l'heure en jour de la semaine mois en lettre, jour, annee 
+    let listePalindromes = [] //liste qui se remplira avec les palindromes trouvés
 
-    /*while(listePalindromes.length < x){
-       let nouvelleDate = new Date () ++
-}*/
-    if(nouvelleDate === isPalindrome() true ){
-        return nouvelleDate += listePalindromes
-    }else{
-        nouvelleDate 
-    }
-    
+    while(listePalindromes.length < x){ //tant que la liste des palindromes est plus petite que "x"
+       
+
+    //il faut que la date soit dans le bon format
+
+        let annee = dateDuJour.getFullYear();
+        let mois = ('0' + (dateDuJour.getMonth() + 1)).slice(-2); //"0" pour les 9 premiers mois, +1 car janvier est index 0, .slice(-2) pr enlever le 0 si on est sur les 10 11 et 12e mois
+        let jour = ('0' + dateDuJour.getDate()).slice(-2); //"0" pour les 9 premiers jours et .slice(-2) pr enlever le 0
+        
+        let dateDuJourFormatted = `${jour}/${mois}/${annee}`; // la date est au bon format  
+
+            if(isPalindrome(dateDuJourFormatted)){ //on vérifie que la date est un palindrome
+                listePalindromes.push(dateDuJourFormatted)//si c'est le cas onh l'ajoute à la liste
+            }
+
+        dateDuJour.setDate(dateDuJour.getDate()+1)//on ajoute 1 jour à la date du jour et on augmente le mois et l'année quand c'est nécessaire
 }
+    return listePalindromes
+}
+
+console.log("liste des dates " + getNextPalindromes(2))*/
+
+
+/*Étape 4
+Refactorer la fonction isPalindrome pour faire en sorte qu’elle renvoie si, ou non, une chaine de caractère est un palindrome. 
+Créer ensuite une nouvelle fonction isDatePalindrome qui reprendra les spécificités du palindrome au 
+format date (comme s’assurer que la date est valide) et qui appellera isPalindrome.*/
+
+function isPalindrome(string){
+
+    let stringInversee = "";
+
+    for(let i=0 ; i < string.length; i++){ // une boucle pour ajouter les caractères au début
+        stringInversee = string[i] + stringInversee
+        console.log(stringInversee)
+    }
+
+    if(string === stringInversee){ // on compare les deux chaines de caractères
+        
+        return true
+    }else{
+        
+        return false
+    }
+}
+console.log("est-ce un palindrome ? " + isPalindrome("tortue"))
